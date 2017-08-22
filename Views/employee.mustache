@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    
+   
+    <h1>Index</h1><br> 
+
+    <a class="link" href="/forhire">For Hire</a>
+    <a class="link" href="/employed">Employed</a>
+    <a class="link" href="/">Main</a>
+    <div class="users">
+    {{#users}}
+    <a href="/profile/{{_id}}">
+    <div class="boxes">
+        <img src={{avatar}}/><br>
+         {{name}} <br> 
+         {{job}}{{^job}}For Hire{{/job}}<br>
+         {{company}} <br><br>
+         </div>
+    {{/users}}
+    {{^users}}
+         No users available
+    {{/users}}
+    </div>
+    </a>
+    <script src="./main.js"></script>
+</body>
+
+</html>
