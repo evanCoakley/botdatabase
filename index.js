@@ -28,8 +28,8 @@ MongoClient.connect(dbUrl, function (err, db) {
 //         res.send(savedRobots);
 //     })
 // })
-
 // set up rendering engine mustache-express
+
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
 app.set("view engine", "mustache");
@@ -38,18 +38,14 @@ app.use(express.static("./public"));
 
 // app.get("/", (req, res) => {
 //     res.render('employee', data);
-
 // });
 
 // app.get("/profile/:id", (req, res) => {
-
-
 //     let reqId = req.params.id;
 //     let foundUser = data.users.find(user => user.id == reqId);
 //     res.render('profile', { data: foundUser });
-
-
 // });
+
 app.get("/", (req, res) => {
     Robots.find({}).toArray((err, foundRobots) => {
         if (err) res.status(500).send(err);
@@ -71,18 +67,14 @@ app.get("/forhire", (req, res) => {
         res.render("employee", { users: forHireBots });
 
     });
-
-
 });
+
 app.get("/employed", (req, res) => {
     Robots.find({ job: { $ne: null } }).toArray((err, employedBots) => {
         if (err) res.status(500).send(err);
         res.render("employee", { users: employedBots })
     })
 })
-
-
-
 
 app.listen(3000, function () {
     console.log('Successfully started express application!');
